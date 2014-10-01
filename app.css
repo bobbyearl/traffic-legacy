@@ -1,0 +1,24 @@
+body {
+  padding-top: 10px;
+}
+
+.tab-content {
+  padding-top: 10px;
+}
+
+.route {
+  float: left;
+  width: 25%;
+}
+
+.route h4 {
+  text-align: center;
+}
+
+.compiled-cameras {
+  font-size: 10px;
+}
+
+#player_wrapper {
+  
+}
