@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="app.css">
+  
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+            <a href="#tab-routes" role="tab" data-toggle="tab">Routes</a>
+          </li>
+          <li>
+            <a href="#tab-cameras" role="tab" data-toggle="tab">Cameras</a>
+          </li>
+        </ul>
+        
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab-routes">
+            <div class="compiled-routes clearfix"></div>    
+          </div>
+          <div class="tab-pane" id="tab-cameras">
+          
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="compiled-cameras"></div>
+              </div>
+              <div class="col-sm-9">
+                <div id="player"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>        
+        
+      </div>
+    </div>
+  </div>
+  
+  <script id="template-route" type="text/x-handlebars-template">
+    {{# each this }}
+      <div class="route route-index-{{ index }}">
+        <div id="route-{{ @index }}"></div>
+      </div>
+    {{/ each }}
+  </script>
+  
+  <script id="template-cameras" type="text/x-handlebars-template">
+    {{# if features }}
+      <ul class="list-unstyled">
+        {{# each features }}
+          {{# if_eq properties.region "Charleston" }}
+            <li>
+              <a href="#{{ @index }}" class="camera" data-index="{{ @index }}">
+                {{ @index }}: {{ properties.title }}  
+              </a>
+            </li>  
+          {{/ if_eq }}
+        {{/ each }}
+      </ul>
+    {{ else }}
+      <p class="alert alert-warning">Unable to load cameras.</p>
+    {{/ if }}
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+  <script src="jwplayer/jwplayer.js"></script>
+  <script src="app.js"></script>
+  
+</body>
+</html>
