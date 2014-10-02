@@ -51,8 +51,14 @@
   <script id="template-route" type="text/x-handlebars-template">
     {{# each this }}
       <div class="route route-index-{{ index }}">
-        <h4 class="visible-xs visible-sm">{{ feature.properties.title }}</h4>
+        
         <div id="route-{{ @index }}"></div>
+        <small class="text-center visible-xs visible-sm">{{ feature.properties.title }}</small>
+        
+        {{# mod @index 4 0 }}
+          <div class="clearfix"></div>
+        {{/ mod }}
+        
       </div>
     {{/ each }}
   </script>

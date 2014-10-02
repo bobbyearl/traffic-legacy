@@ -27,6 +27,10 @@
         return a == b ? opts.fn(this) : opts.inverse(this);
       });
       
+      Handlebars.registerHelper('mod', function(i, n, r, opts) {
+        return parseInt(i) % n == r ? opts.fn(this) : opts.inverse(this);
+      })
+      
       // Reverse route in afternoon
       if ( (new Date()).getHours() > 12) {
         route.reverse();
