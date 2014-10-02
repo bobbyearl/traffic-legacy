@@ -8,6 +8,7 @@ body {
 
 .route {
   float: left;
+  min-height: 175px;
   width: 25%;
 }
 
@@ -17,8 +18,4 @@ body {
 
 .compiled-cameras {
   font-size: 10px;
-}
-
-#player_wrapper {
-  
 }
