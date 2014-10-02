@@ -47,7 +47,12 @@
           stretching: 'fill',
           width: '100%',
           aspectratio: '4:3',
-          file: route[i].feature.properties.rtmp_url
+          playlist: [{
+            sources: [
+              { file: route[i].feature.properties.rtmp_url },
+              { file: route[i].feature.properties.http_url }
+            ]
+          }]
         })
       }
       
@@ -57,12 +62,18 @@
       // Load requested camera
       $('.camera').click(function(e) {
         e.stopPropagation();
+        var p = data.features[$(this).data('index')].properties;
         jwplayer('player').setup({
           autostart: true,
           stretching: 'fill',
           width: '100%',
           aspectratio: '4:3',
-          file: data.features[$(this).data('index')].properties.rtmp_url
+          playlist: [{
+            sources: [
+              { file: p.rtmp_url },
+              { file: p.http_url }
+            ]
+          }]
         });
       });
       
