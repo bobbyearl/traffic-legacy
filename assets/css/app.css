@@ -16,6 +16,10 @@ body {
   text-align: center;
 }
 
-.compiled-cameras {
+#camera {
   font-size: 10px;
+}
+
+#camera li.active {
+  background: #EFEFEF;
 }

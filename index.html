@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   
+  <title>Charleston Traffic</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
   
 </head>
 <body>
@@ -16,76 +17,94 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="active">
-            <a href="#tab-routes" role="tab" data-toggle="tab">Routes</a>
-          </li>
-          <li>
-            <a href="#tab-cameras" role="tab" data-toggle="tab">Cameras</a>
-          </li>
-        </ul>
-        
-        <div class="tab-content">
-          <div class="tab-pane active" id="tab-routes">
-            <div class="compiled-routes clearfix"></div>    
-          </div>
-          <div class="tab-pane" id="tab-cameras">
-          
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="compiled-cameras"></div>
-              </div>
-              <div class="col-sm-9">
-                <div id="player"></div>
-              </div>
-            </div>
-            
-          </div>
-        </div>        
-        
+        <div class="compiled"></div>        
       </div>
     </div>
   </div>
   
-  <script id="template-route" type="text/x-handlebars-template">
-    {{# each this }}
-      <div class="route route-index-{{ index }}">
-        
-        <div id="route-{{ @index }}"></div>
-        <small class="text-center visible-xs visible-sm">{{ feature.properties.title }}</small>
-        
-        {{# mod @index 4 0 }}
-          <div class="clearfix"></div>
-        {{/ mod }}
-        
+  <script id="template" type="text/x-handlebars-template">
+    
+    <ul class="nav nav-tabs" role="tablist">
+      {{# each route }}
+        <li>
+          <a href="#route-{{ @index }}">{{ name }}</a>
+        </li>
+      {{/ each }}
+      <li>
+        <a href="#camera">Charleston</a>
+      </li>
+      <li>
+        <a href="#add"><i class="fa fa-plus-circle"></i></a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      
+      {{# each route }}
+        <div class="tab-pane" id="route-{{ @index }}">
+          {{# each camera }}
+            <div class="route">
+
+              <div id="route-{{ @../index }}-camera-{{ @index }}"></div>
+              <small class="text-center visible-xs visible-sm">
+                {{ feature.properties.title }}
+              </small>
+
+              {{# mod @index 4 0 }}
+                <div class="clearfix"></div>
+              {{/ mod }}
+
+            </div>
+          {{/ each }}
+        </div>
+      {{/ each }}
+      
+      <div class="tab-pane" id="camera">
+        <div class="row">
+          <div class="col-sm-3">
+            {{# if camera.features }}
+              <ul class="list-unstyled">
+                {{# each camera.features }}
+                  {{# if_eq properties.region "Charleston" }}
+                    <li>
+                      <a href="#camera-{{ @index }}">
+                        {{ @index }}: {{ properties.title }}  
+                      </a>
+                    </li>  
+                  {{/ if_eq }}
+                {{/ each }}
+              </ul>
+            {{/ if }}
+          </div>
+          <div class="col-sm-9">
+            <div id="player">
+              Please select a camera.
+            </div>
+            {{# unless camera.features }}
+              <p class="alert alert-warning">Unable to load cameras.</p>
+            {{/ unless }}
+          </div>
+        </div>
       </div>
-    {{/ each }}
-  </script>
-  
-  <script id="template-cameras" type="text/x-handlebars-template">
-    {{# if features }}
-      <ul class="list-unstyled">
-        {{# each features }}
-          {{# if_eq properties.region "Charleston" }}
-            <li>
-              <a href="#{{ @index }}" class="camera" data-index="{{ @index }}">
-                {{ @index }}: {{ properties.title }}  
-              </a>
-            </li>  
-          {{/ if_eq }}
-        {{/ each }}
-      </ul>
-    {{ else }}
-      <p class="alert alert-warning">Unable to load cameras.</p>
-    {{/ if }}
+      
+      <div class="tab-pane" id="add">
+        <h3>Add Your Route</h3>
+        <p>Like the idea of this page but thought, "I wish I could see my route?"  I've built the site so that adding new routes is pretty painless, I just don't know which ones to add.  Use the create issue button below to whisk yourself over to the the repository's issues page on GitHub.</p>
+        <p><strong>Really like the page?</strong> Like use it everyday to get home?  Kindly consider clicking the <s>buy me a beer</s> send my kids go to college button below.
+        </p>
+        <p>
+          <a href="http://github.com/bobbyearl/traffic/issues" class="btn btn-primary" target="_blank">Create Issue</a>
+          <a href="http://#" class="btn btn-default">Send my Kids to College</a>
+        </p>
+      </div>
+    </div> 
   </script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-  <script src="jwplayer/jwplayer.js"></script>
-  <script src="app.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="assets/js/jwplayer/jwplayer.js"></script>
+  <script src="assets/js/app.js"></script>
   
 </body>
 </html>
