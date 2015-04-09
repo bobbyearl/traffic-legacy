@@ -23,14 +23,21 @@
         { index: 315 },
         { index: 316 }
       ]
-    }/*,
+    },
     {
-      name: 'Goose Creek',
+      name: 'Ravenel Bridge',
       camera: [
-        { index: 307 }
+        { index: 326 },
+        { index: 327 },
+        { index: 328 },
+        { index: 329 },
+        { index: 330 },
+        { index: 331 },
+        { index: 332 },
+        { index: 333 },
+        { index: 334 },
       ]
     }
-    */
   ];
   
   $(function() {
