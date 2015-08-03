@@ -74,13 +74,9 @@
         <div class="tab-pane" id="route-{{ @index }}">
           <div class="row">
             {{# each camera }}
-              <div class="col-sm-4">
-
+              <div class="col-sm-3">
+                <small id="route-{{ @../index }}-camera-{{ @index }}-desc" class="visible-xs"></small>
                 <div id="route-{{ @../index }}-camera-{{ @index }}"></div>
-                <small class="text-center visible-xs visible-sm">
-                  {{ feature.properties.title }}
-                </small>
-
               </div>
             {{/ each }}
           </div>
