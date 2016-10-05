@@ -41,6 +41,7 @@
   <script id="template" type="text/x-handlebars-template">
 
     <nav class="navbar navbar-default navbar-fixed-top">
+
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -49,6 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <a class="navbar-brand" href="../">Bobby Earl</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
@@ -57,11 +59,18 @@
                 <a href="#route-{{ @index }}">{{ name }}</a>
               </li>
             {{/ each }}
+            <!--
             <li>
               <a href="#camera">Charleston</a>
             </li>
+          -->
             <li>
-              <a href="#add"><i class="fa fa-plus-circle"></i></a>
+              <a href="#add"><i class="fa fa-info-circle"></i></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/search?q=%23HurricaneMatthew&src=tyah" target="_blank" rel="nofollow noreferrer">
+                <i class="fa fa-exclamation-triangle text-danger"></i>
+              </a>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -112,6 +121,12 @@
       </div>
 
       <div class="tab-pane" id="add">
+
+        <p class="alert alert-warning"><strong>2016-10-05</strong> I've temporarily updated the available routes to keep an eye those evacuating the lowcountry.</p>
+
+        <h3>About</h3>
+        <p>These camera feeds come directly from <a href="http://www.511sc.org/" target="_blank" rel="nofollow noreferrer">511sc.org</a>.  Their website isn't bad, I'm just a bit lazy and didn't like having to individually load cameras.</p>
+
         <h3>Add Your Route</h3>
         <p>Like the idea of this page but thought, "I wish I could see my route?"  I've built the site so that adding new routes is pretty painless, I just don't know which ones to add.  Use the create issue button below to whisk yourself over to the the repository's issues page on GitHub.</p>
         <p><strong>Really like the page?</strong> Like use it everyday to get home?  Kindly consider clicking the <s>buy me a beer</s> send my kids to college button below.</p>
