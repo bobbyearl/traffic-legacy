@@ -19,3 +19,9 @@
 #camera li.active {
   background: #EFEFEF;
 }
+
+.col-camera {
+  margin-bottom: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+}
