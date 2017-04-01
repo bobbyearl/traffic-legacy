@@ -155,6 +155,12 @@
         updateView($(this).attr('href'));
       });
 
+      // Close mobile menu on nav click
+      var navMain = $(".navbar-collapse");
+      navMain.on("click", "a:not([data-toggle])", null, function () {
+        navMain.collapse('hide');
+      });
+
       // Default entry point
       updateView(location.hash);
 
